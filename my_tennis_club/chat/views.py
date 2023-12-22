@@ -11,8 +11,8 @@ def custome_404(request, exception=None):
     return render(request, '404.html', status=404)
 
 def chat_view(request):
-    
-    return render(request, 'home.html')
+
+    return render(request, 'containers/chat/home.html')
 
 def register(request):
     if request.method == 'POST':
@@ -23,7 +23,7 @@ def register(request):
     else:
         form = userRegisterationForm()
 
-    return render(request, 'registeration/register.html', {'form': form})
+    return render(request, 'containers/registeration/register.html', {'form': form})
 
 def user_login(request):
     if request.method == 'POST':
@@ -36,5 +36,5 @@ def user_login(request):
     else:
         form = AuthenticationForm()
     
-    return render(request, 'registeration/login.html', {'form': form})
+    return render(request, 'containers/registeration/login.html', {'form': form})
 

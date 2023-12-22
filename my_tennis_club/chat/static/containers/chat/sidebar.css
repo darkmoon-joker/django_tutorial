@@ -1,4 +1,119 @@
-.chat-sidebar {
-    width: 30%;
-    background-color: aliceblue;
+.chat-sidebar-container {
+    width: 40%;
+    background-color: #fcfcf9;
+    border-right: 1px solid black;
+    z-index: 1;
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-sidebar-container::-webkit-scrollbar {
+    width: 9px;
+}
+  
+.chat-sidebar-container::-webkit-scrollbar-thumb {
+    background-color: rgb(182, 182, 182);
+    border-radius: 4px;
+}
+
+.chat-sidebar-container::-webkit-scrollbar-track {
+    background-color: #ffffff00;
+}
+
+.chat-sidebar-container::-webkit-scrollbar-corner {
+    background-color: #f1f1f1;
+}
+
+.chat-history-date {
+    padding-left: 40px;
+    margin-bottom: 10px;
+
+    font-size: 0.875rem;
+    color: rgb(167, 167, 167);
+}
+
+.chat-history-title {
+    position: relative;
+
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    padding-left: 5px;
+    padding-right: 50px;
+
+    border-radius: 7px;
+
+    display: flex;
+
+    float: center;
+    width: calc(100% - 70px);
+
+    font-size: 1.2rem;
+    font-weight: 550;
+    line-height: 1.5;
+    color: #646464;
+
+    cursor: pointer;
+
+    background-color: #ffffff00;
+    transition: background-color 0.3s ease;
+}
+
+.chat-history-title:hover {
+    background-color: #e8e8e3;
+}
+
+.chat-history-title:active {
+    background-color: #cfcfc9;
+}
+
+.chat-history-title.disabled {
+    background-color: #d8d7d0;
+}
+
+.chat-history-title-link {
+    color: #646464;
+    width: calc(100% - 30px);
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    display: block;
+    overflow: hidden;
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+    text-decoration: none; 
+}
+
+.chat-history-button-del {
+    position: absolute;
+    width: 50px;
+    height: 100%;
+    
+    right: 0;
+    bottom: 0;
+
+    border: none;
+    cursor: pointer;
+    background-color: #ffffff00;
+    transition: color 0.3s ease;
+
+    font-size: 1rem;
+}
+
+.chat-history-button-del:hover {
+    color: #c2c2c2;
+}
+
+.chat-history-button-del:active {
+    color: #fff;
+}
+
+.chat-history-button-del:disabled {
+    cursor: not-allowed;
+    color: rgb(216, 216, 216);
 }

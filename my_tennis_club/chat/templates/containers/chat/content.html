@@ -1,3 +1,65 @@
 <div class="chat-content">
-    <h2>Chat Contents</h2>
+    <input id="user_id" type="number" placeholder="1"/>
+    <input id="chat_id" type="number" placeholder="1"/>
+    <input id="chat_date" type="text" placeholder="2023-12-13"/>
+    <input id="chat_title" type="text" placeholder="Who am I?"/>
+
+    <select id="header" name="header">
+        <option value="0">Header</option>
+        <option value="1">Content</option>
+    </select>
+
+    <select id="role" name="role">
+        <option value="0">None</option>
+        <option value="1">User</option>
+        <option value="2">ChatGPT</option>
+    </select>
+
+    <input id="chat_prompt" type="text" placeholder="type user chat prompt"/>
+
+    <button onclick="sendData()">Add to Database</button>
 </div>
+
+<script>
+    function sendData() {
+        // Get data from input fields
+        var user_id = document.getElementById('user_id').value;
+        var chat_id = document.getElementById('chat_id').value;
+        var chat_date = document.getElementById('chat_date').value;
+        var chat_title = document.getElementById('chat_title').value;
+        var header = document.getElementById('header').value;
+        var role = document.getElementById('role').value;
+        var chat_prompt = document.getElementById('chat_prompt').value;
+
+        // Create data object
+        var dataValue = {
+            user_id: user_id,
+            chat_id: chat_id,
+            chat_date: chat_date,
+            chat_title: chat_title,
+            header: header,
+            role: role,
+            chat_prompt: chat_prompt,
+        };
+
+        // Get CSRF token from cookies
+        var csrfToken = getCookie('csrftoken');
+
+        // Make a fetch request to the backend
+        fetch('/chat/api/newdata/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({ data: dataValue })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>

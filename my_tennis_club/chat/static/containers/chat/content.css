@@ -1,4 +1,7 @@
 .chat-content {
     width: 70%;
     background-color:aqua;
+
+    display: flex;
+    flex-direction: column;
 }

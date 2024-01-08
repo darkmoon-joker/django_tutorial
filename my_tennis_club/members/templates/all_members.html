@@ -1,4 +1,5 @@
 {% extends "master.html" %}
+{% load static %}
 
 {% block title %}
   My Tennis Club - List of all members
@@ -7,11 +8,28 @@
 
 {% block content %}
   <div class="mycard">
-    <h1>Members</h1>
-    <ul>
-      {% for x in mymembers %}
-        <li onclick="window.location = 'details/{{ x.slug }}'">{{ x.firstname }} {{ x.lastname }}</li>
-      {% endfor %}
-    </ul>
+    <h1><center>Members</center></h1>
+    <table class="table table-white table-striped table-responsive-xxl">
+        <tbody>
+            {% for x in mymembers %}
+                {% if forloop.counter0 == 0 %}
+                    <tr>
+                {% endif %}
+                <td>
+                    <div class="card" style="width:400px;">
+                        <img class="card-img-top" src="{% static 'img/avatar.png' %}" alt="Card image">
+                        <div class="card-body">
+                        <h4 class="card-title">{{ x.firstname }} {{ x.lastname }}</h4>
+                        <p class="card-text">{{ x.firstname }} {{ x.lastname }}</p>
+                        <a href="details/{{ x.slug }}" class="btn btn-primary">See Profile</a>
+                        </div>
+                    </div>
+                </td>
+                {% if forloop.counter0 == 2 %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
   </div>
 {% endblock %}
